@@ -105,5 +105,5 @@ def post_delete(request,slug=None):
     return redirect("posts:list")
 def home(request,slug=None):
 
-    return render(request,"base.html")
+    return render(request,"home.html")
 # Create your views here.
