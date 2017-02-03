@@ -1,45 +1,95 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 {% block content %}
 <div class='container'>
-<h1>{{ title }}</h1>
-<form method='GET' action=''>
-<input type='text' name='q' placeholder='Search posts'value='{{request.GET.q}}'/>
-<input type='submit' value='search' />
+		<!-- page-banner-section
+			================================================== -->
+		<section class="page-banner-section">
+			<div class="container">
+				<h1>Our Blog</h1>
+			</div>
+		</section>
+		<!-- End page-banner section
 
-{% for obj in object_list %}
-<div class="row">
-  <div class="col-sm-12">
-    <div class="thumbnail">
-      {% if obj.image %}
-      <img src='{{obj.image.url}}' class='img-responsive'/>
-      {%endif%}
-      <div class="caption">
-        {%if obj.draft %} <h3>Staff only: Draft </h3>{% if obj.publish > today %}<h3>Staff only: Future Post {%endif%}</h3>{%endif%}
-        <h3><a href='{{ obj.get_absoulute_url }}'>{{obj.title}}</a><small>{{obj.publish}}</small></br>
-</h3>   {% if obj.user.get_full_name %}<p>Author: {{ obj.user.get_full_name}}</p>{%endif%}
-        <p>{{obj.content|linebreaks|truncatechars:120}}</br>
-</p>
-        <p><a href="{{ obj.get_absoulute_url }}" class="btn btn-primary" role="button">View</a>
-      </div>
-    </div>
-  </div>
-  <hr/>
-</div>
-{% endfor %}
-<div class="pagination">
-    <span class="step-links">
-        {% if object_list.has_previous %}
-            <a href="?{{page_request_var}}={{ object_list.previous_page_number }}{%if request.GET.q%}&q={{request.GET.q}}{%endif%}">previous</a>
-        {% endif %}
 
-        <span class="current">
-            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
-        </span>
+              			================================================== -->
+              		<section class="blog-section">
+              			<div class="container">
+              				<div class="row">
+              					<div class="col-md-8">
+              						<div class="blog-box">
 
-        {% if object_list.has_next %}
-            <a href="?{{page_request_var}}={{ object_list.next_page_number }}{%if request.GET.q%}&q={{request.GET.q}}{%endif%}">next</a>
-        {% endif %}
-    </span>
-</div>
+              							<div class="blog-post">
+                              {% for obj in object_list %}
+                              {% if obj.image %}
+                              <img src='{{obj.image.url}}' class='img-responsive'/>
+                              {%endif%}
+              								<div class="post-content-text">
+                                <h3><a href='{{ obj.get_absoulute_url }}'>{{obj.title}} </a><small>{{obj.publish}}</small></br>
+                        </h3>   {% if obj.user.get_full_name %}<p>Author: {{ obj.user.get_full_name}}</p>{%endif%}
+                                <p>{{obj.content|linebreaks|truncatechars:120}}</br>
+              									<a href="{{ obj.get_absoulute_url }}">Read More <i class="fa fa-angle-right"></i></a>
+              								</div>
+                              {%endfor%}
+              							</div>
+
+
+
+              							<ul class="pagination-list">
+              								<li><a href="#" class="prev-pag">prev</a></li>
+              								<li><a href="#" class="active">1</a></li>
+              								<li><a href="#">2</a></li>
+              								<li><a href="#">3</a></li>
+              								<li><a href="#" class="next-pag">next</a></li>
+              							</ul>
+
+              						</div>
+
+              					</div>
+              					<div class="col-md-4">
+              						<div class="sidebar">
+
+              							<div class="category-widget widget">
+              								<h2>Categories</h2>
+              								<ul class="category-list">
+              									<li><a href="#">Donation</span></a></li>
+              									<li><a href="#">Volunteer</span></a></li>
+              									<li><a href="#">Help & Support</span></a></li>
+              								</ul>
+              							</div>
+
+
+              							<div class="archieve-widget widget">
+              								<h2>archieve</h2>
+              								<ul class="archieve-list">
+              									<li><a href="#">September 2014</a></li>
+              									<li><a href="#">Octomber 2014</a></li>
+              									<li><a href="#">November 2014</a></li>
+              									<li><a href="#">December 2014</a></li>
+              									<li><a href="#">Jannuary 2015</a></li>
+              								</ul>
+              							</div>
+
+              							<div class="tags-widget widget">
+              								<h2>TAG Widget</h2>
+              								<ul class="tags-list">
+              									<li><a href="#">Membership</a></li>
+              									<li><a href="#">Volunteering</a></li>
+              									<li><a href="#">Donating</a></li>
+              									<li><a href="#">Helping Victims</a></li>
+              								</ul>
+              							</div>
+
+              						</div>
+              					</div>
+              				</div>
+              			</div>
+              		</section>
+              		<!-- End blog section -->
+
+
+
+
+
+
 
 {% endblock content %}

@@ -118,10 +118,10 @@
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav navbar-right">
-									<li><a class="active" href="#">Home</a></li>
+									<li><a class="active" href="{% url 'home' %}">Home</a></li>
 									<li><a href="about.html">About</a></li>
 									<li><a href="services.html">Donations</a></li>
-									<li><a href="services.html">Help & support</a></li>
+									<li><a href="/posts/">Blogs</a></li>
 									<li><a href="contact.html">Contact</a></li>
 									<li class="search"><a href="#" class="open-search"><i class="fa fa-search"></i></a>
 								<form class="form-search" method='GET' action=''>
@@ -148,9 +148,8 @@
 					<h1>Join Our Messageboard</h1>
 				</div>
 				<form class="subscribe">
-					<input type="text" name="name-subs" id="name-subs" placeholder="name"/>
-					<input type="text" name="email-subs" id="email-subs" placeholder="your email address"/>
-					<input type="submit" id="submit-subscribe" value="subscribe"/>
+
+					<input type="submit" id="submit-subscribe" value="Sign Up"/>
 				</form>
 				<p>Please contact us if you want to do charity through the mailbox.</p>
 			</div>
@@ -177,7 +176,7 @@
 					<div class="col-md-4">
 						<div class="contact-info">
 							<h2><i class="fa fa-clock-o"></i> Office hours</h2>
-							<p>Monday to Friday: 8:00 - 18:00 <br> Saturday, Sunday: 9:00 - 14:00</p>
+							<p>Monday to Friday: 10:00 - 17:00 <br> Saturday, Sunday: 10:00 - 13:00</p>
 						</div>
 					</div>
 				</div>
