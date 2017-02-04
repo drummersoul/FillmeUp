@@ -106,4 +106,6 @@ def post_delete(request,slug=None):
 def home(request,slug=None):
 
     return render(request,"home.html")
+def about_us(request,slug=None):
+    return render(request,"about_us.html",{})
 # Create your views here.

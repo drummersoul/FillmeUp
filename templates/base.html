@@ -2,7 +2,7 @@
 {%load staticfiles%}
 <html lang="en" class="no-js" xml:lang="nep">
 <head>
-	<title>Fill-me Up | Donation Website</title>
+	<title>{%block title_head%}Fill-me Up | Donation Website{%endblock title_head%}</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,22 +105,13 @@
 						</div>
 						<div class="container">
 							<!-- Brand and toggle get grouped for better mobile display -->
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-								<a class="navbar-brand" href="index.html"><img src="images/logo.png" alt=""></a>
-							</div>
-
+						
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav navbar-right">
 									<li><a class="active" href="{% url 'home' %}">Home</a></li>
-									<li><a href="about.html">About</a></li>
-									<li><a href="services.html">Donations</a></li>
+									<li><a href="#">About</a></li>
+									<li><a href="#">Donations</a></li>
 									<li><a href="/posts/">Blogs</a></li>
 									<li><a href="contact.html">Contact</a></li>
 									<li class="search"><a href="#" class="open-search"><i class="fa fa-search"></i></a>
