@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+	Events | Lists
+{% endblock  %}
+
+
+{% block content %}
+<section class="page-banner-section">
+	<div class="container">
+		<h1>Upcoming Events</h1>
+	</div>
+</section>
+<section class="blog-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="blog-box">
+					<div class="blog-post">
+			{% for object in object_list%}
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<div class="tabbable tabbable-custom tabbable-noborder">
+							<div class="tab-content">
+								<div id="tab_2_2" class="tab-pane active">
+									<div class="row booking-results">
+										<div class="col-md-12">
+											<div class="booking-result">
+												<div class="booking-img">
+													<img src="{{object.image.url}}" alt="">
+													<ul class="list-unstyled price-location">
+														<li>
+															<i class="fa fa-map-marker"></i> {{object.address}}
+														</li>
+														<li>
+															<i class="fa fa-envelope"></i> {{object.email}}
+														</li>
+														<li>
+															<i class="fa fa-phone"></i> {{object.contact_no}}
+														</li>
+													</ul>
+												</div>
+												<div class="booking-info">
+													<h2>
+													<a href="{{object.get_absolute_url}}">
+													{{object.name}}</a>
+													</h2>
+													{% if not object.blocked %}
+														{% if object.verification_status %}
+															<span class="label label-success">Verified</span>
+														{% else %}
+															<span class="label label-warning">Pending</span>
+														{% endif %}
+													{% else %}
+														<span class="label label-danger">Blocked</span>
+													{% endif %}
+													<h4>{{object.average_rating}} <small><span class="fa fa-star"></span></small></h4>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="margin-top-20">
+						<ul class="pagination pagination-square">
+					        {% if object_list.has_previous %}
+					        <li>
+					            <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><span aria-hidden="true">&laquo;</span></a>
+					        </li>
+					        {% else %}
+					        	<li>
+					            	<a href="#"><span aria-hidden="true">&laquo;</span></a>
+					            </li>
+					        {% endif %}
+					        {% for i in object_list.paginator.page_range %}
+					       		<li {% if i == object_list.number %}class="active"{% endif %}>
+					       			<a href="?{{ page_request_var }}={{i}}">{{i}}</a>
+					       		</li>
+					        {% endfor %}
+					        {% if object_list.has_next %}
+					        <li>
+					            <a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><span aria-hidden="true">&raquo;</span></a>
+					          </li>
+					        {% else %}
+					        	<li>
+					            	<a href="#"><span aria-hidden="true">&raquo;</span></a>
+					            </li>
+					        {% endif %}
+
+
+						</ul>
+
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+	<!-- END PAGE CONTENT -->
+</div>
+</section>
+
+
+
+
+{% endblock content %}

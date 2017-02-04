@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Volunteer | {{volunteer.name}}
+{% endblock  %}
+
+
+{% block content %}
+<section class="blog-section">
+	<div class="page-content">
+		<div class="container">
+			<div class="portlet light">
+				<div class="portlet-body">
+					<div class="blog-page">
+						<div class="row">
+							<div class="col-md-3 article-block">
+							<div class="blog-tag-data">
+								<img src="{{volunteer.image.url}}" class="img-responsive" alt="">
+							</div>
+							</div>
+							<div class="col-md-9 blog-sidebar">
+								<div class="portlet light">
+									<div class="portlet-title">
+										<div class="caption">
+											<span style="font-size:40px;" class="caption-subject">{{volunteer.name}}</span>
+											{% if not volunteer.blocked %}
+												{% if volunteer.verification_status %}
+												<span class="label label-success">Verified</span>
+												{% else %}
+												<span class="label label-warning">Pending</span>
+												{% endif %}
+											{% else %}
+												<span class="label label-danger">Blocked</span>
+											{% endif %}
+
+										</div>
+										<div class="actions">
+											<a href="{% url 'volunteer:update_volunteer' volunteer.slug %}" class="btn btn-circle btn-default">
+											<i class="fa fa-edit"></i> Take part </a>
+											<a href="{% url 'volunteer:report_volunteer' volunteer.slug %}" class="btn btn-circle btn-default">
+											<i class="fa fa-edit"></i> Interested </a>
+										</div>
+									</div>
+									<div class="portlet-body">
+										<h4>{{volunteer.average_rating}} <small><span class="fa fa-star"></span></small></h4>
+										<h4><small><span class="fa fa-map-marker"></span></small>  {{volunteer.address}}</h4>
+										<h4><small><span class="fa fa-globe"></span></small>  <a href="{{volunteer.website}}">{{volunteer.website}}</a> </h4>
+										<h4><small><span class="fa fa-envelope"></span></small>  {{volunteer.email}}</h4>
+										<h4><small><span class="fa fa-phone"></span></small>  {{volunteer.contact_no}}</h4>
+									</div>
+								</div>
+							</div>
+						<!--end col-md-3-->
+						</div>
+						<hr/>
+						<div class="row">
+							<div class="col-md-9">
+								<div class="media">
+									<h3>Reviews</h3>
+									{% for review in Reviews %}
+									<a href="javascript:;" class="pull-left">
+										<img alt="" src="{% static 'madara.jpg' %}" class="media-object">
+									</a>
+									<div class="media-body">
+										<h4 class="media-heading"><a href="{% url 'user:show_profile' review.user.user|slugify%}">{{review.user.user}}</a>
+
+											<span>
+												{{review.timestamp|timesince}} ago
+											</span>
+										</h4>
+										{{review.rating}}
+										<p>
+										{{review.content}}
+										</p>
+										<hr>
+									</div>
+									{% endfor %}
+								</div>
+
+								<hr>
+								<div class="post-comment">
+									<h3>Review</h3>
+									<form role="form" action="" method="POST">
+										{% csrf_token %}
+										<div class="form-group">
+											<h4><span class="fa fa-star-o"></span><span class="fa fa-star-o"></span><span class="fa fa-star-o"></span><span class="fa fa-star-o"></span><span class="fa fa-star-o"></span></h4>
+											{{form.rating}}
+											{{form.content}}
+										</div>
+										<button class="margin-top-20 btn blue" type="submit">Post a Review</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock content %}

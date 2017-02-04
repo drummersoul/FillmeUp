@@ -12,6 +12,9 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^posts/',include("posts.urls",namespace='posts')),
+    url(r'^volunteer/', include('volunteer.urls', namespace="volunteer")),
+
+    url(r'^accounts/', include('allauth.urls')),
 
     #url(r'^posts/$', "<appname>.views.<function_name>"),
 

@@ -38,7 +38,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
-    
+    'volunteer',
+    'accounts',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,3 +119,15 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static_cdn")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn")
+
+AUTHENTICATION_BACKENDS = (
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
+
+SITE_ID = 1
