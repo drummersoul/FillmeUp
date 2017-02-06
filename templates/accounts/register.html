@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Register
+{% endblock  %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-pencil font-green-sharp"></i>
+                        <span class="caption-subject font-green-sharp bold uppercase">Register</span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                <form role="form" method="POST" action="" enctype="multipart.form-data">
+                    {% csrf_token %}
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label id="first_name" for="{{form.first_name.id_for_label}}" >First Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                {{form.first_name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label id="last_name" for="{{form.last_name.id_for_label}}" >Last Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                {{form.last_name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label id="email" for="{{form.email.id_for_label}}" >Username</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                                {{form.email}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label id="username" for="{{form.username.id_for_label}}" >Username</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                {{form.username}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label id="password" for="{{form.password.id_for_label}}" >Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-asterisk"></i>
+                                </span>
+                                {{form.password}}
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block blue" type="submit">Register</button>
+                    </div>
+                </form>
+                Already Registered?? If Yes, <a href="{% url 'accounts:login' %}">Login</a>
+                </div>
+              
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

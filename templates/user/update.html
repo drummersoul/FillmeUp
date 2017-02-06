@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Update | {{instance.user.username}}
+{% endblock  %}
+
+
+{% block content %}
+
+	<section class="page-banner-section">
+		<div class="container">
+			<h1>Edit Profile</h1>
+		</div>
+	</section>
+	<div class="container">
+	<div class="portlet light">
+        <div class="portlet-body form">
+            <form role="form" method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-body">
+                	<div class="form-group">
+                        <label id="first_name" for="{{user_form.first_name.id_for_label}}" >First Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                            	<i class="fa fa-user"></i>
+                            </span>
+                            {{user_form.first_name}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="last_name" for="{{user_form.last_name.id_for_label}}" >Last Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                            	<i class="fa fa-user"></i>
+                            </span>
+                            {{user_form.last_name}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="email" for="{{user_form.email.id_for_label}}" >Email</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                           		<i class="fa fa-envelope"></i>
+                            </span>
+                            {{user_form.email}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+    					<label id="contact_no" for="{{profile_form.contact_no.id_for_label}}" >Contact No</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                            	<i class="fa fa-phone"></i>
+                            </span>
+                            {{profile_form.contact_no}}
+                        </div>
+                    </div>
+
+                    </div>
+                    <div class="form-group">
+                    	<label id="birth_date" for="{{profile_form.birth_date.id_for_label}}" >Birth Date</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                            	<i class="fa fa-calendar"></i>
+                            </span>
+    						{{profile_form.birth_date}}
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label id="address" for="{{profile_form.address.id_for_label}}" >Address</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-map-marker"></i>
+                            </span>
+                            {{profile_form.address}}
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label id="country" for="{{profile_form.country.id_for_label}}" >Country</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-globe"></i>
+                            </span>
+                            {{profile_form.country}}
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label id="bio" for="{{profile_form.bio.id_for_label}}" >Bio</label>
+                        <div class="input-group">
+                        	<span class="input-group-addon">
+                           		<i class="fa fa-file"></i>
+                            </span>
+    						{{profile_form.bio}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="image" for="{{profile_form.image.id_for_label}}" >Image</label>
+                        <div class="input-group">
+
+    						{{profile_form.image}}
+                        </div>
+                    </div>
+
+                    <button class="margin-top-20 btn blue" type="submit">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+		<section class="page-banner-section">
+			<div class="container">
+				<h1></h1>
+			</div>
+		</section>
+{% endblock content %}

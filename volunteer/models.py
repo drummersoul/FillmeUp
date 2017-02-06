@@ -26,6 +26,7 @@ class Volunteer(models.Model):
     website = models.URLField(max_length=100, unique=True)
     email = models.EmailField(max_length=100, unique=True)
     content = models.TextField()
+    event_date = models.DateField(null=True)
     verification_status = models.IntegerField(
         default=0, choices=VERIFICATION_CHOICE)
     image = models.ImageField(upload_to=upload_location, null=True,

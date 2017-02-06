@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Report | {{report.volunteer.name}}
+{% endblock  %}
+
+
+{% block content %}
+<div class="page-container">
+	<div class="page-content">
+		<div class="container">
+			<div class="portlet light">
+				<div class="portlet-body">
+					<div class="portlet light">
+						<div class="portlet-title">
+							<div class="caption">
+								<span style="font-size:40px;" class="caption-subject">{{report.title}}</span>
+								{% if report.verification_status %}
+									<span class="label label-success">Verified</span>
+								{% else %}
+									<span class="label label-warning">Pending</span>
+								{% endif %}
+							</div>
+							<div class="actions">
+								<a href="{% url 'verify_report' report.id %}" class="btn btn-circle btn-default">
+								<i class="fa fa-edit"></i> Verify </a>
+								<a href="{% url 'delete_report' report.id %}" class="btn btn-circle btn-default">
+								<i class="fa fa-trash"></i> Delete</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<h4><small><span class="fa fa-user"></span></small> <a href="{% url 'user:show_profile' report.user|slugify %}">{{report.user}}</a></h4>
+							<h4><small><span class="fa fa-building"></span></small> <a href="{% url 'volunteer:show_volunteer' report.volunteer.slug %}">{{report.volunteer}}</a></h4>
+							<h4><small><span class="fa fa-calendar"></span></small> {{report.timestamp}}</h4>
+							<hr/>
+							{{report.content}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}
+	User | Lists
+{% endblock  %}
+
+
+{% block content %}
+<!-- BEGIN PAGE CONTAINER -->
+<section class="page-banner-section">
+	<div class="container">
+		<h1>User List</h1>
+	</div>
+</section>
+<div class="page-container">
+	<div class="page-content">
+		<div class="container">
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-users font-green-sharp"></i>
+						<span class="caption-subject font-green-sharp bold uppercase">Users</span>
+					</div>
+				</div>
+				<div class="portlet-body">
+					<div class="table-scrollable">
+						<table class="table table-striped table-hover">
+						<thead>
+						<tr>
+							<th>
+								S.N.
+							</th>
+							<th>
+								 First Name
+							</th>
+							<th>
+								 Last Name
+							</th>
+							<th>
+								 Username
+							</th>
+							<th>
+								 Status
+							</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for object in object_list%}
+						<tr>
+							<td>
+								{{forloop.counter}}
+							</td>
+							<td>
+								{{object.user.first_name}}
+							</td>
+							<td>
+								{{object.user.last_name}}
+							</td>
+							<td>
+								<a href="{{object.get_absolute_url}}">{{object.user}}</a>
+							</td>
+							<td>
+								{% if not object.blocked %}
+									<span class="label label-md label-success">
+									Verified
+									</span>
+								{% else %}
+									<span class="label label-md label-danger">
+									Blocked
+									</span>
+								{% endif %}
+							</td>
+						</tr>
+						{% endfor %}
+						</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="margin-top-20">
+				<ul class="pagination pagination-square">
+			        {% if object_list.has_previous %}
+			        	<li>
+			            	<a href="?{{ page_request_var }}={{ object_list.previous_page_number }} "><span aria-hidden="true">&laquo;</span></a>
+			            </li>
+			        {% else %}
+			        	<li>
+			            	<a href="#"><span aria-hidden="true">&laquo;</span></a>
+			            </li>
+			        {% endif %}
+			        {% for i in object_list.paginator.page_range %}
+			        	<li {% if i == object_list.number %}class="active"{% endif %}>
+			        		<a href="?{{ page_request_var }}={{i}}">{{i}}</a>
+			        	</li>
+			        {% endfor %}
+			        {% if object_list.has_next %}
+			        	<li>
+			            	<a href="?{{ page_request_var }}={{ object_list.next_page_number }}"><span aria-hidden="true">&raquo;</span></a>
+			            </li>
+			         {% else %}
+			        	<li>
+			            	<a href="#"><span aria-hidden="true">&raquo;</span></a>
+			            </li>
+			        {% endif %}
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>
+{% endblock content %}

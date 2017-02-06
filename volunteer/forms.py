@@ -17,6 +17,7 @@ class VolunteerForm(forms.ModelForm):
 			"email",
 			"image",
 			"content",
+			"event_date",
 			# "verification_status",
 		]
 		widgets={
@@ -47,6 +48,12 @@ class VolunteerForm(forms.ModelForm):
 				'required': 'true',
                 'placeholder': 'example@example.com',
                 'class': 'form-control',
+				}
+			),
+			"event_date":forms.DateInput(attrs={
+				'required':'true',
+				'placeholder':'Eventdate',
+				'class': 'form-control',
 				}
 			),
 			"registration_no":forms.TextInput(attrs={

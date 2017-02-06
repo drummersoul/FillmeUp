@@ -81,7 +81,7 @@
 										<ul class="info-list">
 									<li>
 										<i class="fa fa-globe"></i>
-										Language: <span title="English"><a lang="en" href="qa-html-language-declarations.es">English</a></span>
+										Language: <span title="English"><a lang="en" href="#">English</a></span>
 									</li>
 									<li>
 										<i class="fa fa-phone"></i>
@@ -110,10 +110,23 @@
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav navbar-right">
 									<li><a class="active" href="{% url 'home' %}">Home</a></li>
-									<li><a href="#">About</a></li>
-									<li><a href="#">Donations</a></li>
-									<li><a href="/posts/">Blogs</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="{% url 'donate:list' %}">Donations</a></li>
+									<li><a href="{%url 'volunteer:list_volunteer'%}">Events</a></li>
+									<li><a href="{% url 'user:list_user' %}">User List</a></li>
+									<li><a href="{% url 'posts:list' %}">Blogs</a></li>
+									<li>{% if request.user.is_active%}
+                                <img alt="" class="img-circle" src="{% static 'default.png' %}">
+                                {% endif %}
+
+                                    {% if request.user.is_active %}
+                                      {% if request.user.is_superuser %}
+                                      <a href="/admin/">Admin</a>
+                                      {% else %}
+                                      <a href='{% url "accounts:logout" %}'>{{request.user.get_full_name}} | Logout</a>
+                                      {% endif %}
+                                    {% else %}
+                                    <a href='{% url "accounts:login" %}'>Sign In / Up</a>
+                                    {% endif %}</a></li>
 									<li class="search"><a href="#" class="open-search"><i class="fa fa-search"></i></a>
 								<form class="form-search" method='GET' action=''>
 									<input type="search" placeholder="Search:"/>
@@ -140,7 +153,7 @@
 				</div>
 					<form class="subscribe">
 
-					<a href="accouts/login"><input type="button" value="Sign Up"/></a>
+					<a href="#" class="button-one"><h4>SignUp</h4></a>
 				</form>
 				<p>Please contact us if you want to do charity through the mailbox.</p>
 			</div>

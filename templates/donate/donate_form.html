@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block title_head %}
+	Donation Form
+{% endblock  %}
+
+
+{% block content %}
+<section class="page-banner-section">
+	<div class="container">
+		<h1>Add Your Donation</h1>
+	</div>
+</section>
+<section class="blog-section">
+<div class="container">
+    <div class="portlet light">
+        <div class="portlet-body form">
+            <form id="contact-form" role="form" method="POST" action="" enctype="multipart/form-data">
+{% csrf_token %}
+
+                <hr>
+                <div class="form-group">
+                    <label id="shirt_qty" for="{{form.shirt_qty.id_for_label}}" >Shirts</label>
+                    <div class="input-group">
+
+                    {{form.shirt_qty}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label id="pant_qty" for="{{form.pant_qty.id_for_label}}" >Pants</label>
+                        <div class="input-group">
+
+                        {{form.pant_qty}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label id="blanket_qty" for="{{form.blanket_qty.id_for_label}}" >Blankets</label>
+                            <div class="input-group">
+
+                            {{form.blanket_qty}}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label id="books_qty" for="{{form.books_qty.id_for_label}}" >Books</label>
+                                <div class="input-group">
+
+                                {{form.books_qty}}
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label id="other_qty" for="{{form.other_qty.id_for_label}}" >Other items(pencil,pen...)</label>
+                                    <div class="input-group">
+
+                                    {{form.other_qty}}
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label id="furniture_qty" for="{{form.furniture_qty.id_for_label}}" >Furniture</label>
+                                        <div class="input-group">
+
+                                        {{form.furniture_qty}}
+                                            </div>
+
+		                                        <label id="furniture_description" for="{{form.furniture_description.id_for_label}}" >Furniture description</label>
+		                                        <div class="input-group">
+
+		                                        {{form.furniture_description}}
+		                                            </div>
+
+		                                        </div>
+																						<hr>
+                    	<button class="margin-top-20 btn blue" type="submit">Donate</button>
+            </form>
+
+        </div>
+      </div>
+
+</section>
+{% endblock content %}

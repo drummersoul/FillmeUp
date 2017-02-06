@@ -36,9 +36,9 @@
 
 										</div>
 										<div class="actions">
-											<a href="{% url 'volunteer:update_volunteer' volunteer.slug %}" class="btn btn-circle btn-default">
+											<a href="#" class="btn btn-circle btn-default">
 											<i class="fa fa-edit"></i> Take part </a>
-											<a href="{% url 'volunteer:report_volunteer' volunteer.slug %}" class="btn btn-circle btn-default">
+											<a href="#" class="btn btn-circle btn-default">
 											<i class="fa fa-edit"></i> Interested </a>
 										</div>
 									</div>
@@ -48,6 +48,7 @@
 										<h4><small><span class="fa fa-globe"></span></small>  <a href="{{volunteer.website}}">{{volunteer.website}}</a> </h4>
 										<h4><small><span class="fa fa-envelope"></span></small>  {{volunteer.email}}</h4>
 										<h4><small><span class="fa fa-phone"></span></small>  {{volunteer.contact_no}}</h4>
+                    <h4><small><span class="fa fa-table"></span></small>  {{volunteer.content}}</h4>
 									</div>
 								</div>
 							</div>

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	Report | {{volunteer.name}}
+{% endblock  %}
+
+
+{% block content %}
+<div class="page-container">
+	<div class="page-content">
+	<div class="container">
+	</div>
+	</div>
+	<div class="page-container">
+		<div class="page-content">
+			<div class="container">
+			<!-- BEGIN PAGE CONTENT INNER -->
+				<div class="portlet light">
+					<div class="portlet-body">
+						<div class="post-comment">
+							<h3>Report</h3>
+								<form role="form" action="" method="POST">
+									{% csrf_token %}
+									<div class="form-group">
+										<label id="title" for="{{form.title.id_for_label}}" >Title</label>
+										{{form.title}}
+									</div>
+									<div class="form-group">
+										<label id="content" for="{{form.content.id_for_label}}" >Content</label>
+										{{form.content}}
+									</div>
+									<button class="margin-top-20 btn blue" type="submit">Report</button>
+								</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock content %}

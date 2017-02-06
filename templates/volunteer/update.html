@@ -1,87 +1,88 @@
 {% extends "base.html" %}
-{%load static%}
 
-{% block title_head %}
-	Volunteering Events | Add
+{% block title %}
+	Events | Update
 {% endblock  %}
 
 
 {% block content %}
-<section class="contact-section">
-<div class="container">
     <div class="portlet light">
         <div class="portlet-title">
-            <div class="caption"><hr>
-                <i class="fa fa-plus font-green-sharp"></i>
-                <span class="caption-subject font-green-sharp bold uppercase">Add a Event<hr/></span>
+            <div class="caption">
+                <i class="fa fa-edit font-green-sharp"></i>
+                <span class="caption-subject font-green-sharp bold uppercase">Edit Event Details</span>
             </div>
         </div>
         <div class="portlet-body form">
-            <form id="contact-form" role="form" method="POST" action="" enctype="multipart/form-data">
+            <form role="form" method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-body">
                 	<div class="form-group">
                         <label id="name" for="{{form.name.id_for_label}}" >Name</label>
                         <div class="input-group">
-
+                            <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                            </span>
                             {{form.name}}
                         </div>
                     </div>
                     <div class="form-group">
                         <label id="address" for="{{form.address.id_for_label}}" >Address</label>
                         <div class="input-group">
-
+                            <span class="input-group-addon">
+                            <i class="fa fa-map-marker"></i>
+                            </span>
                             {{form.address}}
                         </div>
                     </div>
                     <div class="form-group">
                         <label id="contact_no" for="{{form.contact_no.id_for_label}}" >Contact No</label>
                         <div class="input-group">
-
+                            <span class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+                            </span>
                             {{form.contact_no}}
                         </div>
                     </div>
                     <div class="form-group">
     					<label id="website" for="{{form.website.id_for_label}}" >Website</label>
                         <div class="input-group">
-
+                            <span class="input-group-addon">
+                            <i class="fa fa-globe"></i>
+                            </span>
                             {{form.website}}
                         </div>
                     </div>
                     <div class="form-group">
     					<label id="email" for="{{form.email.id_for_label}}" >Email</label>
                         <div class="input-group">
-
+                            <span class="input-group-addon">
+                            <i class="fa fa-envelope"></i>
+                            </span>
                             {{form.email}}
                         </div>
                     </div>
-										<div class="form-group">
-							<label id="event_date" for="{{form.event_date.id_for_label}}" >Event Date</label>
-												<div class="input-group">
 
-														{{form.event_date}}
-												</div>
-										</div>
-
+                    </div>
                     
                     <div class="form-group">
                         <label id="image" for="{{form.image.id_for_label}}" >Image</label>
                         <div class="input-group">
     						{{form.image}}
-                <hr>
-                <div class="form-group">
-                    <label id="content" for="{{form.content.id_for_label}}" >Description</label>
-                    <div class="input-group">
-
-                    {{form.content}}
                         </div>
                     </div>
-                    <button class="margin-top-20 btn blue" type="submit">Add Event</button>
+
+                    <div class="form-group">
+                        <label id="content" for="{{form.content.id_for_label}}" >Description</label>
+                        <div class="input-group">
+
+                        {{form.content}}
+                            </div>
+                        </div>
+                    <button class="margin-top-20 btn blue" type="submit">Edit Event</button>
                 </div>
             </form>
-
         </div>
-      </div>
+    </div>
 
-</section>
 {% endblock content %}

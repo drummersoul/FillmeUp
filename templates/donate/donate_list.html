@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}
+	User | Lists
+{% endblock  %}
+
+
+{% block content %}
+<!-- BEGIN PAGE CONTAINER -->
+<section class="page-banner-section">
+	<div class="container">
+		<h1>Donation List</h1>
+	</div>
+</section>
+<div class="page-container">
+	<div class="page-content">
+		<div class="container">
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-users font-green-sharp"></i>
+						<span class="caption-subject font-green-sharp bold uppercase">Users</span>
+					</div>
+				</div>
+				<div class="portlet-body">
+					<div class="table-scrollable">
+						<table class="table table-striped table-hover">
+						<thead>
+						<tr>
+							<th>
+								User
+							</th>
+							<th>
+								 Shirts
+							</th>
+							<th>
+								 Pants
+							</th>
+							<th>
+								Blankets
+							</th>
+
+							<th>
+								 Books
+							</th>
+							<th>
+								 Others(pencil,pen...)
+							</th>
+							<th>
+									Furniture
+							</th>
+						</tr>
+						</thead>
+						<tbody>
+
+						{%for instance in instance_list%}
+
+						<tr>
+							<td>
+								<a href="{{object.get_absolute_url}}">{{instance.user}}</a>
+							</td>
+
+								<td>{{instance.shirt_qty}}</td>
+								<td>{{instance.pant_qty}}</td>
+								<td>{{instance.blanket_qty}}</td>
+								<td>{{instance.books_qty}}</td>
+								<td>{{instance.other_qty}}</td>
+								<td>{{instance.furniture_qty}}</td>
+
+							</tr>
+						{% endfor %}
+						
+						</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="margin-top-20">
+				<ul class="pagination pagination-square">
+			        {% if object_list.has_previous %}
+			        	<li>
+			            	<a href="?{{ page_request_var }}={{ object_list.previous_page_number }} "><span aria-hidden="true">&laquo;</span></a>
+			            </li>
+			        {% else %}
+			        	<li>
+			            	<a href="#"><span aria-hidden="true">&laquo;</span></a>
+			            </li>
+			        {% endif %}
+			        {% for i in object_list.paginator.page_range %}
+			        	<li {% if i == object_list.number %}class="active"{% endif %}>
+			        		<a href="?{{ page_request_var }}={{i}}">{{i}}</a>
+			        	</li>
+			        {% endfor %}
+			        {% if object_list.has_next %}
+			        	<li>
+			            	<a href="?{{ page_request_var }}={{ object_list.next_page_number }}"><span aria-hidden="true">&raquo;</span></a>
+			            </li>
+			         {% else %}
+			        	<li>
+			            	<a href="#"><span aria-hidden="true">&raquo;</span></a>
+			            </li>
+			        {% endif %}
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>
+{% endblock content %}

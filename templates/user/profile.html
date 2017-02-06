@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+	Profile | {{object.user.username}}
+{% endblock title%}
+
+{% block content %}
+<section class="page-banner-section">
+	<div class="container">
+		<h1></h1>
+	</div>
+</section>
+<div class="page-container">
+		<div class="page-container">
+			<div class="page-content">
+				<div class="container">
+					<div class="portlet light">
+						<div class="portlet-body">
+							<div class="blog-page">
+								<div class="row">
+									<div class="col-md-3 article-block">
+									<div class="blog-tag-data">
+										{%if object.image%}
+										<img src="{{object.image.url}}" class="img-responsive" alt="">
+										{%endif%}
+										</div>
+									</div>
+									<div class="col-md-9 blog-sidebar">
+										<div class="portlet light">
+											<div class="portlet-title">
+												<div class="caption">
+													<span style="font-size:40px;" class="caption-subject">{{object.user.get_full_name}}</span>
+														{% if not object.blocked %}
+														<span class="label label-success">Verified</span>
+														{% else %}
+														<span class="label label-danger">Blocked</span>
+														{% endif %}
+												</div>
+													{% if request.user.is_superuser %}
+
+													<div class="actions">
+														<a href="{% url 'user:update_profile' object.slug %}" class="btn btn-circle btn-default">
+														<i class="fa fa-edit"></i> Update </a>
+														<a href="{% url 'user:delete_profile' object.slug %}" class="btn btn-circle btn-default">
+														<i class="fa fa-trash"></i> Delete</a>
+														<a href="{% url 'user:block_profile' object.slug %}" class="btn btn-circle btn-default">
+														<i class="fa fa-ban"></i> Block</a>
+													</div>
+
+														{%endif%}
+
+											</div>
+											<div class="portlet-body">
+												<h4><small><span class="fa fa-user"></span></small> {{object.user.username}}</h4>
+												<h4><small><span class="fa fa-map-marker"></span></small> {{object.address}}</h4>
+												<h4><small><span class="fa fa-calendar"></span></small>  {{object.birth_date}}</h4>
+												<h4><small><span class="fa fa-envelope"></span></small>  {{object.user.email}}</h4>
+												<h4><small><span class="fa fa-phone"></span></small>  {{object.contact_no}}</h4>
+												<h4><small><span class="fa fa-globe"></span></small> {{object.country}}</h4>
+											</div>
+										</div>
+									</div>
+								<!--end col-md-3-->
+								</div>
+								<hr/>
+								<h4 class="bold">Biography</h4>
+								{{object.bio|safe}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<section class="page-banner-section">
+		<div class="container">
+			<h1></h1>
+		</div>
+	</section>
+{% endblock content %}
